@@ -2,7 +2,6 @@
 #include <Metal/Metal.hpp>
 #include <simd/simd.h>
 
-#include <chrono>
 #include <fstream>
 #include <iostream>
 #include <regex>

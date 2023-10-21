@@ -8,7 +8,7 @@
 
 #include <SDL.h>
 
-const int scale = 3;
+const int scale = 2;
 
 void close(SDL_Window *win, SDL_Renderer *renderer) {
     SDL_DestroyRenderer(renderer);

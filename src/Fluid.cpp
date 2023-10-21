@@ -84,8 +84,6 @@ Fluid::Fluid(MTL::Device *pDevice, float pdt, float pDiff, float pVisc) {
 }
 
 void Fluid::step() {
-    auto start = std::chrono::high_resolution_clock::now();
-
     diffuse(1, bufferVx0, bufferVx, visc, dt);
 
     diffuse(2, bufferVy0, bufferVy, visc, dt);
@@ -98,12 +96,6 @@ void Fluid::step() {
     sendProjectCommand(bufferVx, bufferVy, bufferVx0, bufferVy0);
     diffuse(0, bufferS, bufferDensity, diff, dt);
     sendAdvectCommand(0, bufferDensity, bufferS, bufferVx, bufferVy, bufferDt);
-
-    // Profiling
-    auto end = std::chrono::high_resolution_clock::now();
-    auto duration =
-        std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    std::cout << duration.count() << std::endl;
 }
 
 // Copy data from device to cpu, alter on cpu, then copy back
